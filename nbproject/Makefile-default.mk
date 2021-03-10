@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=
+SOURCEFILES_QUOTED_IF_SPACED=newfile.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=
-POSSIBLE_DEPFILES=
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/newfile.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/newfile.o.d
 
 # Object Files
-OBJECTFILES=
+OBJECTFILES=${OBJECTDIR}/newfile.o
 
 # Source Files
-SOURCEFILES=
+SOURCEFILES=newfile.c
 
 # Pack Options 
 PACK_COMMON_OPTIONS=-I "${CMSIS_DIR}/CMSIS/Core/Include"
@@ -110,7 +110,19 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/newfile.o: newfile.c  .generated_files/c393b6cb651e48962e4565200c26df89a4490295.flag .generated_files/cbc3d268a8f4997e6f3af18b8171917d7df11de1.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/newfile.o.d 
+	@${RM} ${OBJECTDIR}/newfile.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/newfile.o.d" -o ${OBJECTDIR}/newfile.o newfile.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}/same70b" ${PACK_COMMON_OPTIONS} 
+	
 else
+${OBJECTDIR}/newfile.o: newfile.c  .generated_files/55a10411d282bb3a727e08ee277fa80351904abf.flag .generated_files/cbc3d268a8f4997e6f3af18b8171917d7df11de1.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/newfile.o.d 
+	@${RM} ${OBJECTDIR}/newfile.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/newfile.o.d" -o ${OBJECTDIR}/newfile.o newfile.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}/same70b" ${PACK_COMMON_OPTIONS} 
+	
 endif
 
 # ------------------------------------------------------------------------------------
